@@ -1,0 +1,6 @@
+{
+  "name": "Internship Portal",
+  "description": "A comprehensive full-stack platform connecting student interns with HR representatives and mentors, featuring real-time chat, applications, and verifiable PDF certificate generation.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

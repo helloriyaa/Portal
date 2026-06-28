@@ -1,0 +1,10 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Enable full read and write access for development and seeding.
+    // This resolves all "Missing or insufficient permissions" errors on initial boot and seeding.
+    match /{document=**} {
+      allow read, write: if true;
+    }
+  }
+}

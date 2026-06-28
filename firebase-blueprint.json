@@ -1,0 +1,172 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "User profile with role and settings",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "name": { "type": "string" },
+        "email": { "type": "string" },
+        "role": { "type": "string" },
+        "createdAt": { "type": "string" },
+        "approved": { "type": "boolean" },
+        "profile": { "type": "object" },
+        "bookmarkedInternships": { "type": "array" }
+      },
+      "required": ["uid", "name", "email", "role"]
+    },
+    "Internship": {
+      "title": "Internship",
+      "description": "Internship job description",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "company": { "type": "string" },
+        "logoUrl": { "type": "string" },
+        "description": { "type": "string" },
+        "department": { "type": "string" },
+        "duration": { "type": "string" },
+        "seats": { "type": "integer" },
+        "deadline": { "type": "string" },
+        "stipend": { "type": "string" },
+        "location": { "type": "string" },
+        "postedBy": { "type": "string" },
+        "status": { "type": "string" },
+        "approved": { "type": "boolean" }
+      },
+      "required": ["id", "title", "company", "description", "status"]
+    },
+    "Application": {
+      "title": "Application",
+      "description": "An intern application to an internship",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "internshipId": { "type": "string" },
+        "internshipTitle": { "type": "string" },
+        "company": { "type": "string" },
+        "internId": { "type": "string" },
+        "internName": { "type": "string" },
+        "internEmail": { "type": "string" },
+        "status": { "type": "string" },
+        "appliedAt": { "type": "string" }
+      },
+      "required": ["id", "internshipId", "internId", "status"]
+    },
+    "Group": {
+      "title": "Group",
+      "description": "Internship cohort group",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "mentorId": { "type": "string" },
+        "mentorName": { "type": "string" },
+        "studentIds": { "type": "array" },
+        "projectTitle": { "type": "string" }
+      },
+      "required": ["id", "name", "mentorId"]
+    },
+    "Project": {
+      "title": "Project",
+      "description": "Project assigned to students",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "description": { "type": "string" },
+        "techStack": { "type": "array" },
+        "deadline": { "type": "string" },
+        "groupId": { "type": "string" },
+        "studentId": { "type": "string" },
+        "status": { "type": "string" },
+        "githubUrl": { "type": "string" },
+        "reportUrl": { "type": "string" },
+        "submissionText": { "type": "string" }
+      },
+      "required": ["id", "title", "groupId", "studentId", "status"]
+    },
+    "Certificate": {
+      "title": "Certificate",
+      "description": "Certificate generated for student",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "studentId": { "type": "string" },
+        "studentName": { "type": "string" },
+        "company": { "type": "string" },
+        "internshipTitle": { "type": "string" },
+        "mentorName": { "type": "string" },
+        "rating": { "type": "integer" },
+        "issueDate": { "type": "string" },
+        "certificateId": { "type": "string" },
+        "pdfUrl": { "type": "string" }
+      },
+      "required": ["id", "studentId", "certificateId"]
+    },
+    "Message": {
+      "title": "Message",
+      "description": "Chat message inside groups",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "chatId": { "type": "string" },
+        "senderId": { "type": "string" },
+        "senderName": { "type": "string" },
+        "text": { "type": "string" },
+        "sentAt": { "type": "string" }
+      },
+      "required": ["id", "chatId", "senderId", "text"]
+    },
+    "Notification": {
+      "title": "Notification",
+      "description": "User notification",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "title": { "type": "string" },
+        "message": { "type": "string" },
+        "read": { "type": "boolean" },
+        "sentAt": { "type": "string" }
+      },
+      "required": ["id", "userId", "title", "message", "read"]
+    }
+  },
+  "firestore": {
+    "users": {
+      "schema": "User",
+      "description": "Users of the platform"
+    },
+    "internships": {
+      "schema": "Internship",
+      "description": "List of available internship jobs"
+    },
+    "applications": {
+      "schema": "Application",
+      "description": "Intern job applications"
+    },
+    "groups": {
+      "schema": "Group",
+      "description": "Mentoring cohort groups"
+    },
+    "projects": {
+      "schema": "Project",
+      "description": "Student internship project milestones"
+    },
+    "certificates": {
+      "schema": "Certificate",
+      "description": "Issued certificates of achievement"
+    },
+    "messages": {
+      "schema": "Message",
+      "description": "Group chat and discussion messages"
+    },
+    "notifications": {
+      "schema": "Notification",
+      "description": "Real-time user updates"
+    }
+  }
+}
